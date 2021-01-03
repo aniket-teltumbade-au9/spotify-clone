@@ -1,0 +1,8 @@
+export const TOKEN_ADD = 'TOKEN_ADD'
+export const TOKEN_GET = 'TOKEN_GET'
+export const GET_ACCOUNT = 'GET_ACCOUNT'
+export const GET_PLAYLISTS = 'GET_PLAYLISTS'
+export const GET_FEATURED = 'GET_FEATURED'
+export const GET_CATEGORY_LIST = 'GET_CATEGORY_LIST'
+export const GET_CATEGORY_DATA = 'GET_CATEGORY_DATA'
+export const SEARCH_PLAYLIST = 'SEARCH_PLAYLIST'
