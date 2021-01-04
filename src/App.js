@@ -7,6 +7,7 @@ import './css/index.css'
 import AccountPage from './Pages/AccountPage';
 import ProfilePage from './Pages/ProfilePage';
 import SearchPage from './Pages/SearchPage';
+import PlaylistPage from './Pages/PlaylistPage';
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
           <Route exact path='/search/:term' component={SearchPage} />
           <Route exact path='/account' component={AccountPage} /> 
           <Route exact path='/profile' component={ProfilePage} /> 
+          <Route exact path='/playlist/:pid' component={PlaylistPage} /> 
           <Redirect to='/' /> 
         </Switch>
       </div>

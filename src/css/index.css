@@ -4,9 +4,23 @@ font-face {
     src: url("//db.onlinewebfonts.com/t/01173b246d9d9ea808ea75a26b3b61bb.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/01173b246d9d9ea808ea75a26b3b61bb.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/01173b246d9d9ea808ea75a26b3b61bb.woff") format("woff"), url("//db.onlinewebfonts.com/t/01173b246d9d9ea808ea75a26b3b61bb.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/01173b246d9d9ea808ea75a26b3b61bb.svg#Circular Spotify Tx T Black") format("svg");
 }
 
+body {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: aliceblue;
+}
+
 .Navbar {
-    position: relative;
-    float: right;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,11 +119,11 @@ font-face {
 
 .Home .rows .items {
     width: 100%;
-    overflow-x: scroll;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
+    overflow-x: scroll;
     scrollbar-color: #2b28285d rgba(255, 255, 255, 0.329);
     /* thumb and track color */
     scrollbar-width: thin;
@@ -141,23 +155,35 @@ font-face {
 }
 
 .Home .rows .items .item .img, .Home .rows .items .item .title, .Home .rows .items .item .subtitle {
+    width: 150px;
+    margin: auto;
+}
+
+.Search .items .item .img, .Search .items .item .title, .Search .items .item .subtitle {
     width: 170px;
     margin: auto;
 }
 
 .Home .rows .items .item .img {
-    height: 170px;
-    margin: 15px;
+    height: 150px;
+    margin: auto;
     background-position: center;
     background-size: cover;
 }
 
-.Home .rows .items .item .title {
+.Search .items .item .img {
+    height: 170px;
+    margin: auto;
+    background-position: center;
+    background-size: cover;
+}
+
+.Home .rows .items .item .title, .Search .items .item .title {
     font-size: 1.3em;
     font-weight: 700;
 }
 
-.Home .rows .items .item .subtitle {
+.Home .rows .items .item .subtitle, .Search .items .item .subtitle {
     font-size: 1em;
     font-weight: 500;
 }
@@ -266,11 +292,106 @@ font-face {
     width: 150px;
 }
 
+.Search {
+    position: relative;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    font-family: "Circular Spotify Tx T Black";
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: #2b28285d rgba(255, 255, 255, 0.329);
+    /* thumb and track color */
+    scrollbar-width: thin;
+}
+
+.Search .items {
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: aliceblue;
+}
+
+.Search .items .item {
+    width: 220px;
+    height: 330px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(48, 48, 48);
+    box-shadow: 5px 5px 10px black;
+    border-radius: 5px;
+}
+
+.Profile, .Account, .Home, .Search{
+    margin-bottom: 100px;
+    padding-top: 100px;
+}
+
+.Playlist {
+    position: relative;
+    float: right;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+.Playlist .table{
+    margin: auto 10px;
+    top:250px;
+}
+.Playlist .table thead{
+    min-width: 100%;
+    position: fixed;
+    background-color: #212529;
+}
+.Playlist .table tbody{
+    width:100%;
+    overflow-y: scroll;
+    height: 250px;
+    z-index: -999;
+}
+table {
+    table-layout : fixed;
+}
+.Playlist .header {
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    position: fixed;
+    z-index:555;
+}
+
+.Playlist .header .img{
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    margin: 20px;
+}
+.Playlist .header .details{
+    display: flex;
+    flex-direction: column;
+    margin:20px;
+}
+
 @media(max-width:991px) {
     .Sidebar {
         display: none;
     }
-    .Navbar, .Profile, .Account, .Home {
+    .Playlist {
+        width: 100%;
+    }
+    .Navbar, .Profile, .Account, .Home, .Search {
         width: 100%;
     }
     .Profile .user-details {
@@ -285,7 +406,10 @@ font-face {
 /* Small devices (landscape phones, 576px and up) */
 
 @media (min-width: 992px) {
-    .Navbar, .Profile, .Account, .Home {
+    .Playlist {
+        width: calc(100% - 230px);
+    }
+    .Navbar, .Profile, .Account, .Home, .Search {
         width: calc(100% - 230px);
     }
     .Profile .user-details {
@@ -295,4 +419,31 @@ font-face {
         height: 200px;
         width: 200px;
     }
+}
+
+.Player {
+    width: 100vw;
+    height: 100px;
+    z-index: 999;
+    position: fixed;
+    bottom: 0;
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+th,td{
+    overflow: hidden;
 }

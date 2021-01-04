@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_ACCOUNT, GET_CATEGORY_DATA, GET_CATEGORY_LIST, GET_FEATURED, GET_PLAYLISTS, SEARCH_PLAYLIST } from "../actionTypes";
+import { GET_ACCOUNT, GET_CATEGORY_DATA, GET_CATEGORY_LIST, GET_FEATURED, GET_PLAYLISTS, GET_PLAYLISTS_DATA, PLAYING, SEARCH_PLAYLIST } from "../actionTypes";
 
 
 export const getAccount = () => async (dispatch) => {
@@ -92,10 +92,10 @@ export const getCategoryData = (token, category_id, name) => async (dispatch) =>
             };
 
             const playlist = await axios(config)
-            console.log("test3",playlist)
+            console.log("test3", playlist)
             dispatch({
                 type: GET_CATEGORY_DATA,
-                payload: { id: category_id, name:name, playlist: playlist.data }
+                payload: { id: category_id, name: name, playlist: playlist.data }
             })
         }
         catch (error) {
@@ -110,17 +110,17 @@ export const searchPlaylist = (token, term) => async (dispatch) => {
 
             var config = {
                 method: 'get',
-                url: `https://api.spotify.com/v1/search?q=${term}&type=playlist?limit=5`,
+                url: `https://api.spotify.com/v1/search?q=${term}&type=playlist`,
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             };
 
             const playlist = await axios(config)
-            console.log("test4",playlist)
+            console.log("test4", playlist)
             dispatch({
                 type: SEARCH_PLAYLIST,
-                payload: playlist.data 
+                payload: playlist.data
             })
         }
         catch (error) {
@@ -128,3 +128,36 @@ export const searchPlaylist = (token, term) => async (dispatch) => {
         }
     }
 }
+export const getPlaylistTracks = (token, id) => async (dispatch) => {
+    if (token) {
+        console.log(`https://api.spotify.com/v1/playlists/${id}?market=IN`)
+        try {
+
+            var config = {
+                method: 'get',
+                url: `https://api.spotify.com/v1/playlists/${id}?market=IN`,
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            };
+
+            const playlist = await axios(config)
+            //console.log("test4",playlist)
+            dispatch({
+                type: GET_PLAYLISTS_DATA,
+                payload: playlist.data
+            })
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const playTrack = (id) => (dispatch) => {
+    console.log("hey",id)
+    dispatch({
+        type: PLAYING,
+        payload: id
+    })
+}
+

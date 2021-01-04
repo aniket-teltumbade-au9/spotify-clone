@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { getAccount, getPlaylists } from '../redux/actions/spotifyActions'
 
@@ -28,10 +29,11 @@ class ProfilePage extends Component {
                     {
                         this.props.PlaylistData ? (<>
                             <div className="items">
-                                {this.props.PlaylistData.items.filter(ep => ep.public === true).map(el => <div className="item" key={el.name}>
+                                {this.props.PlaylistData.items.filter(ep => ep.public === true).map(el => 
+                                <Link to={`/playlist/`} className="item" key={el.name}>
                                     <div className="img" style={{backgroundImage:`url(${el.images[0].url})`}}></div>
                                     <div className="text">{el.name}</div>
-                                </div>)}
+                                </Link>)}
                             </div>
                         </>) :
                             ""

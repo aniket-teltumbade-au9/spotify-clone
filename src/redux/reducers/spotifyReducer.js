@@ -1,4 +1,4 @@
-import { GET_ACCOUNT, GET_CATEGORY_DATA, GET_CATEGORY_LIST, GET_FEATURED, GET_PLAYLISTS, SEARCH_PLAYLIST } from "../actionTypes"
+import { GET_ACCOUNT, GET_CATEGORY_DATA, GET_CATEGORY_LIST, GET_FEATURED, GET_PLAYLISTS, GET_PLAYLISTS_DATA, PLAYING, SEARCH_PLAYLIST } from "../actionTypes"
 
 const initialState = {
     account: null,
@@ -6,7 +6,9 @@ const initialState = {
     featured: null,
     categorylist: null,
     categorydata: [],
-    search:null
+    search:null,
+    playlist_tracks:null,
+    playing:null
 }
 
 export const spotifyReducer = (state = initialState, { type, payload }) => {
@@ -16,6 +18,8 @@ export const spotifyReducer = (state = initialState, { type, payload }) => {
             return { ...state, account: payload }
         case GET_PLAYLISTS:
             return { ...state, profile_playlist: payload }
+        case GET_PLAYLISTS_DATA:
+            return { ...state, playlist_tracks: payload }
         case GET_FEATURED:
             return { ...state, featured: payload }
         case GET_CATEGORY_LIST:
@@ -24,6 +28,8 @@ export const spotifyReducer = (state = initialState, { type, payload }) => {
             return { ...state, categorydata: [...state.categorydata, payload] }
         case SEARCH_PLAYLIST:
             return { ...state, search: payload }
+        case PLAYING:
+            return { ...state, playing: payload }
         default:
             return state
     }

@@ -29,7 +29,6 @@ class Navbar extends Component {
         })
     }
     handleSubmit = (e) => {
-
         this.props.history.push(`/search/${this.state.search}`)
         e.preventDefault()
     }
