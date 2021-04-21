@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Spotify Clone React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app is clone of Spotify - Online Music Player. In this application, user can login, create playlists, play playlists.
 
 ## Available Scripts
 
