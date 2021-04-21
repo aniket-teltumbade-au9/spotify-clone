@@ -1,6 +1,6 @@
 # Spotify Clone React App
 
-This app is clone of Spotify - Online Music Player. In this application, user can login, create playlists, play playlists.
+This app is clone of Spotify - Online Music Player. In this application, user can login, create playlists, play soundtracks of playlists.
 
 ## Available Scripts
 
